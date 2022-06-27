@@ -1,4 +1,4 @@
-import {types} from "../types";
+import { types } from "../types";
 
 export const changeTitleAction = () => {
     return {
@@ -7,21 +7,36 @@ export const changeTitleAction = () => {
 }
 
 export const changeInputAction = (data) => {
-    return{
+    return {
         type: types.CHANGE_DATA,
         payload: data
     }
 }
 
 export const addUserAction = (user) => {
-    return{
+    return {
         type: types.ADD_USER,
         payload: user
     }
 }
 export const clearDataAction = (data) => {
-    return{
+    return {
         type: types.CLEAR_DATA,
         payload: data
+    }
+}
+
+//hw
+export const postJsonPlaceholder = (user) => {
+    return async dispatch => {
+        const response = fetch('https://jsonplaceholder.typicode.com/users', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        console.log(user);
+        
     }
 }
